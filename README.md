@@ -16,7 +16,8 @@ This is a fully functional e-commerce website built with a Strapi backend and a 
 ### 1. Home Page
 
 The homepage showcases a summer sale banner and features a selection of products. Users can browse all products or filter by categories like "New Arrivals", "Best Sellers", and "Top Rated".
-[home page.pdf](https://github.com/user-attachments/files/16698203/home.page.pdf)
+<img width="1914" alt="home page" src="https://github.com/user-attachments/assets/19dedb7c-c943-4e8a-abec-73bcdc8c2569">
+<img width="1920" alt="home page 2" src="https://github.com/user-attachments/assets/5b7966fb-17e4-48c7-a479-ccbbfd93458a">
 
 ### 2. Product Detail Page
 
@@ -26,18 +27,17 @@ When a product image is clicked, the user is taken to the product detail page wh
 ### 3. Related Products Section
 
 On the product detail page, users can see related products that may interest them.
-[item page.pdf](https://github.com/user-attachments/files/16698204/item.page.pdf)
+<img width="1920" alt="item detail" src="https://github.com/user-attachments/assets/ca72d4aa-e26c-49ff-8fa3-8e449858072d">
 
 ### 4. Cart
 
 The cart allows users to review their selected items, update quantities, and proceed to checkout.
-[cart.pdf](https://github.com/user-attachments/files/16698217/cart.pdf)
+<img width="1920" alt="check out page" src="https://github.com/user-attachments/assets/eb13765b-01ee-495f-b2d3-ab2a8c1f1391">
 
 ### 5. Checkout - Billing Information
 
 The first step of the checkout process collects the user's billing information, including their name and address.
-[check out page1.pdf](https://github.com/user-attachments/files/16698156/check.out.page1.pdf)
-cart.pdf)
+<img width="1920" alt="billing info" src="https://github.com/user-attachments/assets/7d4d4c59-118a-43bb-8888-b81d8048e0d9">
 
 ### 6. Checkout - Payment Information
 
