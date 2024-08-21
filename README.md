@@ -22,12 +22,12 @@ The homepage showcases a summer sale banner and features a selection of products
 ### 2. Product Detail Page
 
 When a product image is clicked, the user is taken to the product detail page where they can view more information about the product, such as the description, price, and related products.
-[item page.pdf](https://github.com/user-attachments/files/16698204/item.page.pdf)
+<img width="1920" alt="item detail" src="https://github.com/user-attachments/assets/ca72d4aa-e26c-49ff-8fa3-8e449858072d">
 
 ### 3. Related Products Section
 
 On the product detail page, users can see related products that may interest them.
-<img width="1920" alt="item detail" src="https://github.com/user-attachments/assets/ca72d4aa-e26c-49ff-8fa3-8e449858072d">
+<img width="1919" alt="related product" src="https://github.com/user-attachments/assets/b7da9cbd-d5c0-4f78-9d25-fb782f9a0aed">
 
 ### 4. Cart
 
