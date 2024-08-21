@@ -42,12 +42,13 @@ The first step of the checkout process collects the user's billing information, 
 ### 6. Checkout - Payment Information
 
 The second step of the checkout process collects payment information, which is securely processed via Stripe.
-<img width="1913" alt="Screenshot 2024-08-21 at 3 06 57 PM" src="https://github.com/user-attachments/assets/238361a6-51f1-4c9e-bc1e-94deee58642c">
+<img width="1896" alt="Screenshot 2024-08-21 at 3 06 15 PM" src="https://github.com/user-attachments/assets/543928ba-a063-4e14-81f2-1604a4b80da5">
 
 ### 7. Order Confirmation
 
 After successful payment, users are shown a confirmation page with a success message.
 <img width="1896" alt="Screenshot 2024-08-21 at 3 06 15 PM" src="https://github.com/user-attachments/assets/543928ba-a063-4e14-81f2-1604a4b80da5">
+<img width="1913" alt="Screenshot 2024-08-21 at 3 06 57 PM" src="https://github.com/user-attachments/assets/238361a6-51f1-4c9e-bc1e-94deee58642c">
 
 ## Technology Stack
 
