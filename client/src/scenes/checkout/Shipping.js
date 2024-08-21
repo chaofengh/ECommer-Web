@@ -38,7 +38,7 @@ const Shipping = ({values,errors,touched,handleBlur,handleChange,setFieldValue})
                         Shipping Information
                     </Typography>
                     <AddressForm 
-                        type='ShippingAddress' 
+                        type='shippingAddress' 
                         values={values.shippingAddress}
                         errors={errors}
                         touched={touched}

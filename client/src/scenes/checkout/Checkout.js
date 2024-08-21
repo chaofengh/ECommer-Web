@@ -4,7 +4,11 @@ import { Formik} from 'formik'
 import { useState } from "react";
 import * as yup from 'yup';
 import Shipping from './Shipping.js';
-import { theme } from "../../theme";
+import { shades } from "../../theme";
+import Payment from './Payment.js'
+import { loadStripe} from '@stripe/stripe-js'
+
+const stripePromise = loadStripe('pk_test_51Ppx5FCKwkzKPBSqSSzNDMlP7AYSbhDq67BZTKCWcYMSesxTksSQOeSaJbPdyaMNNSW60yzQAuwlJMFAv27pRtgO00YXiKBJPo')
 
 const initialValues = {
     billingAddress:{
@@ -46,14 +50,14 @@ const checkoutSchema= [
         }),
         shippingAddress:yup.object().shape({
             isSameAddress:yup.boolean(),
-            firstName:yup.string().when('isSameAddress',{is:false,then:yup.string().required('required')}),
-            lastName:yup.string().when('isSameAddress',{is:false,then:yup.string().required('required')}),
-            country:yup.string().when('isSameAddress',{is:false,then:yup.string().required('required')}),
-            street1:yup.string().when('isSameAddress',{is:false,then:yup.string().required('required')}),
+            firstName:yup.string().when('shippingAddress.isSameAddress',{is:false,then: yup.string().required('required')}),
+            lastName:yup.string().when('shippingAddress.isSameAddress',{is:false,then: yup.string().required('required')}),
+            country:yup.string().when('shippingAddress.isSameAddress',{is:false,then: yup.string().required('required')}),
+            street1:yup.string().when('shippingAddress.isSameAddress',{is:false,then: yup.string().required('required')}),
             street2:yup.string(),
-            city:yup.string().when('isSameAddress',{is:false,then:yup.string().required('required')}),
-            state:yup.string().when('isSameAddress',{is:false,then:yup.string().required('required')}),
-            zipCode:yup.string().when('isSameAddress',{is:false,then:yup.string().required('required')})
+            city:yup.string().when('shippingAddress.isSameAddress',{is:false,then: yup.string().required('required')}),
+            state:yup.string().when('shippingAddress.isSameAddress',{is:false,then: yup.string().required('required')}),
+            zipCode:yup.string().when('shippingAddress.isSameAddress',{is:false,then: yup.string().required('required')})
         })
     }),
 
@@ -70,12 +74,55 @@ const Checkout = ()=>{
     const isFirstStep = activeStep===0;
     const isSecondStep = activeStep ===1;
 
-    const handleFormSubmit = async(value,action)=>{
+    const handleFormSubmit = async(values,actions)=>{
         setActiveStep(activeStep+1);
+
+        //copies the billing address onto shipping address
+        if(isFirstStep && values.shippingAddress.isSameAddress){
+            actions.setFieldValue('shippingAddress',{
+                ...values.billingAddress,
+                isSameAddress:true
+            })
+        }
+        if(isSecondStep){
+            makePayment(values);
+
+        }
+
+        actions.setTouched({});
     }
 
-    const makePayment= async(value)=>{
+    const makePayment= async(values)=>{
 
+
+        const stripe = await stripePromise;
+        const requestBody={
+            username:[values.billingAddress.firstName,values.billingAddress.lastName].join(','),
+            email:values.email,
+            products: cart.map(({id,count})=>({
+                id,
+                count,
+            }))
+        };
+
+
+
+
+        const response = await fetch(`http://localhost:1337/api/orders`,{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify(requestBody)
+        })
+
+        console.log(response)
+
+        const session = await response.json();
+
+
+        
+        await stripe.redirectToCheckout({
+            sessionId:session.id
+        })
     }
 
     return (
@@ -111,6 +158,47 @@ const Checkout = ()=>{
                                 >
                                 </Shipping>
                             )}
+                            {isSecondStep && (
+                                <Payment 
+                                    values={values} 
+                                    errors={errors} 
+                                    touched ={touched} 
+                                    handleBlur={handleBlur} 
+                                    handleChange={handleChange} 
+                                    setFieldValue={setFieldValue}
+                                >
+
+                                </Payment>
+
+                            )}
+                            <Box display='flex' justifyContent='space-between' gap='50px'>
+                                {isSecondStep && (
+                                    <Button 
+                                        fullWidth 
+                                        color='primary' 
+                                        variant='contained' 
+                                        sx={{backgroundColor:shades.primary[200], 
+                                            color:'white', borderRadius:0, 
+                                            padding:'15px 40px'
+                                        }} 
+                                        onClick={()=>setActiveStep(activeStep-1)}
+                                    >
+                                        Back
+                                    </Button>
+                                )}
+                                    <Button 
+                                        fullWidth 
+                                        type='submit'
+                                        color='primary' 
+                                        variant='contained' 
+                                        sx={{backgroundColor:shades.primary[400], 
+                                            color:'white', borderRadius:0, 
+                                            padding:'15px 40px'
+                                        }} 
+                                    >
+                                        {isFirstStep? 'Next':'Place Order'}
+                                    </Button>
+                            </Box>
                         </form>
                     )}
                 </Formik>
