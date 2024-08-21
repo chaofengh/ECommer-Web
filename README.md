@@ -1,77 +1,107 @@
-ECOMMERCE APP
-Overview
-This is a full-fledged e-commerce application that allows users to browse through products, view detailed information on each item, add items to the cart, and proceed through the checkout process with Stripe payment integration. The website offers a user-friendly experience with responsive design and clear navigation.
+# E-Commerce Website
 
-Screenshots
-1. Home Page
+This is a fully functional e-commerce website built with a Strapi backend and a React frontend. The website allows users to browse products, view product details, add items to the cart, and checkout using Stripe for payments.
 
-The homepage displays a banner with the current promotion and a collection of featured products.
-Users can navigate through different product categories such as New Arrivals, Best Sellers, and Top Rated.
-2. Item Detail Page
+## Features
 
-When a user clicks on a product image on the home page, they are taken to the Item Detail Page.
-The page provides a detailed description of the product, options to add the item to the cart, and related product suggestions.
-3. Related Products Section
+- **Home Page**: Displays featured products and promotional banners.
+- **Product Listing**: Browse through a variety of products categorized by "New Arrivals", "Best Sellers", and "Top Rated".
+- **Product Detail**: View detailed information about each product, including images, descriptions, and price.
+- **Related Products**: Shows related items on the product detail page.
+- **Cart**: Users can add items to their cart, update quantities, and proceed to checkout.
+- **Checkout Process**: Includes forms for billing information, payment information (integrated with Stripe), and order confirmation.
 
-Below the product details, a "Related Products" section displays items similar to the one currently being viewed.
-4. Product Hover State
+## Pages
 
-When hovering over a product image, the "Add to Cart" button appears along with a quantity selector.
-5. Shopping Cart
+### 1. Home Page
 
-The shopping cart displays a summary of selected items, with the option to adjust quantities or remove items.
-6. Checkout Page - Billing Information
+The homepage showcases a summer sale banner and features a selection of products. Users can browse all products or filter by categories like "New Arrivals", "Best Sellers", and "Top Rated".
+[home page.pdf](https://github.com/user-attachments/files/16698203/home.page.pdf)
 
-The first step in the checkout process is to enter billing information. Users can fill in details such as name, country, and address.
-7. Checkout Page - Contact Info
+### 2. Product Detail Page
 
-The second step requires users to enter their email and phone number.
-8. Payment Page
+When a product image is clicked, the user is taken to the product detail page where they can view more information about the product, such as the description, price, and related products.
+[item page.pdf](https://github.com/user-attachments/files/16698204/item.page.pdf)
 
-Users are redirected to a Stripe payment page where they can enter their credit card information and complete the purchase.
-9. Order Success Page
+### 3. Related Products Section
 
-After successful payment, users are redirected to a success page confirming the order.
-Features
-Product Browsing: View products by categories, and access detailed descriptions and related products.
-Shopping Cart: Add items to the cart, view a summary, and proceed to checkout.
-Checkout Process: Step-by-step checkout with billing information, contact info, and payment integration.
-Stripe Payment Integration: Secure and reliable payment processing using Stripe.
-Technologies Used
-Frontend: React.js, Material-UI, Redux
-Backend: Strapi (Node.js)
-Payment Processing: Stripe
-Database: SQLite (used with Strapi)
+On the product detail page, users can see related products that may interest them.
+[item page.pdf](https://github.com/user-attachments/files/16698204/item.page.pdf)
 
-Installation and Setup
-Clone the repository:
-bash
-Copy code
-git clone https://github.com/your-repository-url.git
-Navigate to the project directory:
-bash
-Copy code
-cd project-directory
-Install the dependencies:
-bash
-Copy code
-npm install
-Start the Strapi server:
-bash
-Copy code
-npm run develop
-Start the React frontend:
-bash
-Copy code
-cd client
-npm start
-Environment Variables:
-Make sure you have a .env file in your server directory with your Stripe secret key and other necessary environment variables.
-Usage
-Run the backend and frontend: After setting up the project, start both the Strapi backend and React frontend.
-Browse Products: Navigate through the products, add items to your cart, and proceed to checkout.
-Checkout and Payment: Enter billing and contact information, and complete your purchase through Stripe.
-Deployment
-Backend: Host your Strapi application on services like Heroku, DigitalOcean, or AWS.
-Frontend: Deploy your React app on Netlify, Vercel, or any static site hosting service.
-Database: Use a managed SQLite instance or migrate to a production-ready database like PostgreSQL.
+### 4. Cart
+
+The cart allows users to review their selected items, update quantities, and proceed to checkout.
+[cart.pdf](https://github.com/user-attachments/files/16698217/cart.pdf)
+
+### 5. Checkout - Billing Information
+
+The first step of the checkout process collects the user's billing information, including their name and address.
+[check out page1.pdf](https://github.com/user-attachments/files/16698156/check.out.page1.pdf)
+cart.pdf)
+
+### 6. Checkout - Payment Information
+
+The second step of the checkout process collects payment information, which is securely processed via Stripe.
+<img width="1913" alt="Screenshot 2024-08-21 at 3 06 57 PM" src="https://github.com/user-attachments/assets/238361a6-51f1-4c9e-bc1e-94deee58642c">
+
+### 7. Order Confirmation
+
+After successful payment, users are shown a confirmation page with a success message.
+<img width="1896" alt="Screenshot 2024-08-21 at 3 06 15 PM" src="https://github.com/user-attachments/assets/543928ba-a063-4e14-81f2-1604a4b80da5">
+
+## Technology Stack
+
+- **Frontend**: React, Redux, and CSS
+- **Backend**: Strapi (Node.js, Express)
+- **Database**: SQLite (for development)
+- **Payment Processing**: Stripe
+
+## Setup and Installation
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/chaofengh/ecommerce-web.git
+    cd ecommerce-web
+    ```
+
+2. **Install dependencies**:
+    - For the backend:
+      ```bash
+      cd server
+      npm install
+      ```
+    - For the frontend:
+      ```bash
+      cd client
+      npm install
+      ```
+
+3. **Configure environment variables**:
+    - Backend: Create a `.env` file in the `server` directory and add your Stripe secret key and other necessary environment variables.
+    - Example:
+      ```
+      STRIPE_SECRET_KEY=your_stripe_secret_key
+      ```
+
+4. **Start the development server**:
+    - Backend:
+      ```bash
+      cd server
+      npm start
+      ```
+    - Frontend:
+      ```bash
+      cd client
+      npm start
+      ```
+
+5. **View the website**:
+    Open your browser and go to `http://localhost:3000` to view the website.
+
+## Contributing
+
+Feel free to fork the repository and submit pull requests. All contributions are welcome.
+
+## License
+
+This project is licensed under the MIT License.
