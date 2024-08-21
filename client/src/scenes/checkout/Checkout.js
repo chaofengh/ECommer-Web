@@ -80,7 +80,7 @@ const Checkout = ()=>{
 
     return (
         <Box width='80%' m='100px auto'>
-            <Stepper activeSte={activeStep} sx={{m:'20px 0'}}>
+            <Stepper activeStep={activeStep} sx={{m:'20px 0'}}>
                 <Step>
                     <StepLabel>Billing</StepLabel>
                 </Step>
@@ -89,7 +89,7 @@ const Checkout = ()=>{
                 </Step>
             </Stepper>
             <Box>
-                <Formik onSubmit={handleFormSubmit} intialValues={initialValues} validationSchema={checkoutSchema[activeStep]} >
+                <Formik onSubmit={handleFormSubmit} initialValues={initialValues} validationSchema={checkoutSchema[activeStep]} >
                     {({
                         values,
                         errors,
@@ -109,7 +109,6 @@ const Checkout = ()=>{
                                     handleChange={handleChange} 
                                     setFieldValue={setFieldValue}
                                 >
-
                                 </Shipping>
                             )}
                         </form>
